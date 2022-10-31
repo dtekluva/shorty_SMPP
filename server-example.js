@@ -65,7 +65,7 @@ shortyServer.on('submit_sm', function(clientInfo, pdu, callback) {
         ],
         "sender_id": "echoes",
         "message": "Hello good day, I am Adaorah from echoes of Calabar. We about to launch our barbecue grill and a new and improved bar. Coming this Friday and Saturday by",
-        "send_date": "30-10-2021 00:42",
+        "send_date": "30-10-2022 00:42",
         "priority_route": true,
         "campaign_name": "echoesofcalabarLagos",
         "flash_route": false
