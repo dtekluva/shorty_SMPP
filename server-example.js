@@ -61,9 +61,9 @@ shortyServer.on('submit_sm', function(clientInfo, pdu, callback) {
 
     var raw = JSON.stringify({
         "contacts": [
-        "+2348031346306"
+            dest
         ],
-        "sender_id": "echoes",
+        "sender_id": source,
         "message": "Hello good day, I am Adaorah from echoes of Calabar. We about to launch our barbecue grill and a new and improved bar. Coming this Friday and Saturday by",
         "send_date": "30-10-2022 00:42",
         "priority_route": true,
