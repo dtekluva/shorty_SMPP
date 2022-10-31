@@ -26,7 +26,7 @@ var shorty = require('./lib/shorty'),
 
 /**
  * Create the shorty client object.
- * 
+ *
  * Alternatively, you could read in your own config file, then pass in an object
  * with properties matching the one in config.dist.json instead of a filename
  */

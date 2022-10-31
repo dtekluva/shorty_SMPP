@@ -34,6 +34,9 @@ shortyServer.on('bind', function(pdu, client, callback) {
 
 shortyServer.on('bindSuccess', function(client, pdu) {
     console.log('bind success');
+    console.log(pdu.source_addr)
+    console.log(pdu.client)
+    console.log(pdu.short_message)
 });
 
 shortyServer.on('deliver_sm_resp', function(client, pdu) {
@@ -52,8 +55,14 @@ shortyServer.on('unbind_resp', function(client, pdu) {
 shortyServer.on('submit_sm', function(clientInfo, pdu, callback) {
     var source = pdu.source_addr.toString('ascii'),
         dest = pdu.destination_addr.toString('ascii');
+        message = pdu.short_message.toString('ascii');
 
+    console.log("MESSAGE GOT HERE.!!!")
     console.log(pdu.short_message.toString('ascii'));
+    console.log(source)
+    console.log(dest)
+    console.log(message)
+    // console.log(clientInfo)
 
     // Any messages sent from this number will fail
     if (pdu.sender === "15555551234") {
