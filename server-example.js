@@ -34,9 +34,6 @@ shortyServer.on('bind', function(pdu, client, callback) {
 
 shortyServer.on('bindSuccess', function(client, pdu) {
     console.log('bind success');
-    console.log(pdu.source_addr)
-    console.log(pdu.client)
-    console.log(pdu.short_message)
 });
 
 shortyServer.on('deliver_sm_resp', function(client, pdu) {
@@ -55,7 +52,37 @@ shortyServer.on('unbind_resp', function(client, pdu) {
 shortyServer.on('submit_sm', function(clientInfo, pdu, callback) {
     var source = pdu.source_addr.toString('ascii'),
         dest = pdu.destination_addr.toString('ascii');
-        message = pdu.short_message.toString('ascii');
+        message = pdu.short_message.toString();
+
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Api_key gAAAAABiqtXY6qINCFxbvVDUNX80n7vbPuTOBi5F4asM7ofPUfnEFS-h9x4_Fk9oacI_JSKpEkF9YVHP85WsPfnyxCxXFvq7l9J6mVOaOQzq5h1M7if1f99l-yfjZKhDO6KhVXhzAjxRCSM0xh00BIxxZmMOLz8Ukw==");
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "contacts": [
+        "+2348031346306"
+        ],
+        "sender_id": "echoes",
+        "message": "Hello good day, I am Adaorah from echoes of Calabar. We about to launch our barbecue grill and a new and improved bar. Coming this Friday and Saturday by",
+        "send_date": "30-10-2021 00:42",
+        "priority_route": true,
+        "campaign_name": "echoesofcalabarLagos",
+        "flash_route": false
+    });
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch("https://whispersms.xyz/api/send_message/", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
 
     console.log("MESSAGE GOT HERE.!!!")
     console.log(pdu.short_message.toString('ascii'));
